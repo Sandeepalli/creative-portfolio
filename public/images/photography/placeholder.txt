@@ -1,0 +1,3 @@
+Replace this file with your actual photography images.
+Recommended image sizes: 1200x800px or 1600x1067px with consistent aspect ratios.
+Use .jpg format with appropriate compression for best web performance.
