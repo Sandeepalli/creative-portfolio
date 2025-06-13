@@ -1,0 +1,146 @@
+.contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 3rem;
+  background: linear-gradient(135deg, var(--light-color) 60%, var(--secondary-color) 100%);
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(139, 128, 255, 0.08);
+}
+
+.contact-art {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+}
+
+.contact-form {
+  background: var(--light-color);
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(139, 128, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-width: 320px;
+}
+
+.contact-form h2 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 1rem 0.75rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: 0.75rem;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text-color);
+  transition: border 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: var(--primary-color);
+}
+
+.input-group label {
+  position: absolute;
+  left: 0.85rem;
+  top: 1.1rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: 0.2s;
+  background: var(--light-color);
+  padding: 0 0.2rem;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+  top: -0.7rem;
+  left: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  background: var(--light-color);
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, var(--primary-color) 60%, var(--accent-color) 100%);
+  color: var(--text-light);
+  border: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(139, 128, 255, 0.15);
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 18px rgba(139, 128, 255, 0.18);
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.contact-instagram {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.contact-instagram a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-instagram a:hover {
+  color: var(--accent-color);
+}
+
+.contact-instagram svg {
+  transition: transform 0.2s;
+}
+
+.contact-instagram a:hover svg {
+  transform: scale(1.1) rotate(-8deg);
+}

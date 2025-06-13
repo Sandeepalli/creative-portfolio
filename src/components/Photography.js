@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Gallery.css';
 import ImageModal from './ImageModal';
 
 const Photography = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  
+  const [loadedImages, setLoadedImages] = useState({});
+  const [revealIndexes, setRevealIndexes] = useState([]);
+
   // Actual photography data from the photography directory
   const photos = [
     { id: 1, title: 'Photo 1', description: 'Photography collection', image: '/images/photography/IMG_1640.PNG' },
@@ -23,12 +25,34 @@ const Photography = () => {
     { id: 13, title: 'Photo 13', description: 'Photography collection', image: '/images/photography/IMG_6977.PNG' }
   ];
 
+  useEffect(() => {
+    let i = 0;
+    setRevealIndexes([]);
+    const interval = setInterval(() => {
+      setRevealIndexes(prev => {
+        if (prev.length < photos.length) {
+          return [...prev, prev.length];
+        } else {
+          clearInterval(interval);
+          return prev;
+        }
+      });
+      i++;
+    }, 180); // Adjust speed here
+    return () => clearInterval(interval);
+    // eslint-disable-next-line
+  }, []);
+
   const openModal = (photo) => {
     setSelectedImage(photo);
   };
 
   const closeModal = () => {
     setSelectedImage(null);
+  };
+
+  const handleImageLoad = (id) => {
+    setLoadedImages(prev => ({ ...prev, [id]: true }));
   };
 
   return (
@@ -40,10 +64,25 @@ const Photography = () => {
       </div>
       
       <div className="gallery-grid">
-        {photos.map(photo => (
-          <div key={photo.id} className="gallery-item" onClick={() => openModal(photo)}>
+        {photos.map((photo, idx) => (
+          <div
+            key={photo.id}
+            className={`gallery-item${revealIndexes.includes(idx) ? ' revealed' : ''}`}
+            onClick={() => openModal(photo)}
+            style={{ opacity: revealIndexes.includes(idx) ? 1 : 0, transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1)'}}
+          >
             <div className="gallery-image-container">
-              <div className="gallery-image" style={{ backgroundImage: `url(${photo.image})` }}></div>
+              <div className="gallery-image-wrapper">
+                {!loadedImages[photo.id] && <div className="gallery-img-placeholder" />}
+                <img
+                  src={photo.image}
+                  alt={photo.title}
+                  className={`gallery-img${loadedImages[photo.id] ? ' loaded' : ''}`}
+                  loading="lazy"
+                  onLoad={() => handleImageLoad(photo.id)}
+                  style={{ display: loadedImages[photo.id] ? 'block' : 'none' }}
+                />
+              </div>
               <div className="gallery-overlay">
                 <span className="view-icon">+</span>
               </div>
