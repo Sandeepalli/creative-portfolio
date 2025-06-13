@@ -6,11 +6,18 @@ const Home = () => {
   return (
     <div className="home">
       <section className="hero">
-        <h1>Welcome to My Creative Portfolio</h1>
-        <p>Showcasing my work and creative projects</p>
-        <div className="hero-buttons">
-          <Link to="/art" className="btn btn-primary">View Artwork</Link>
-          <Link to="/photography" className="btn btn-secondary">View Photography</Link>
+        <div className="hero-content">
+          <div className="profile-container">
+            <img src="/images/profile.jpg" alt="Profile" className="profile-image" />
+          </div>
+          <div className="hero-text">
+            <h1>Welcome</h1>
+            <p>Showcasing my work and creative projects</p>
+            <div className="hero-buttons">
+              <Link to="/art" className="btn btn-primary">View Artwork</Link>
+              <Link to="/photography" className="btn btn-secondary">View Photography</Link>
+            </div>
+          </div>
         </div>
       </section>
       

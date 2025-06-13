@@ -1,0 +1,3 @@
+Place your profile image here.
+Recommended size: 300x300px or larger with a 1:1 aspect ratio.
+Name it "profile.jpg" or update the path in the Home.js component.

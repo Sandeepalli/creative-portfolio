@@ -6,14 +6,21 @@ import ImageModal from './ImageModal';
 const Photography = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   
-  // Sample photography - replace with your actual photography data
+  // Actual photography data from the photography directory
   const photos = [
-    { id: 1, title: 'Urban Landscape', description: 'New York City, 2023', image: '/images/photography/newyork.jpg' },
-    { id: 2, title: 'Natural Light Portrait', description: 'Studio session, 2023', image: '/images/photography/placeholder2.jpg' },
-    { id: 3, title: 'Sunset at the Beach', description: 'California coast, 2022', image: '/images/photography/sunset.jpg' },
-    { id: 4, title: 'Street Photography', description: 'Downtown, 2023', image: '/images/photography/placeholder4.jpg' },
-    { id: 5, title: 'Architectural Study', description: 'Modern buildings, 2022', image: '/images/photography/placeholder5.jpg' },
-    { id: 6, title: 'Macro Nature', description: 'Spring flowers, 2023', image: '/images/photography/placeholder6.jpg' }
+    { id: 1, title: 'Photo 1', description: 'Photography collection', image: '/images/photography/IMG_1640.PNG' },
+    { id: 2, title: 'Photo 2', description: 'Photography collection', image: '/images/photography/IMG_4646.JPG' },
+    { id: 3, title: 'Photo 3', description: 'Photography collection', image: '/images/photography/IMG_2274.JPG' },
+    { id: 4, title: 'Photo 4', description: 'Photography collection', image: '/images/photography/IMG_2273.JPG' },
+    { id: 5, title: 'Photo 5', description: 'Photography collection', image: '/images/photography/IMG_6981.PNG' },
+    { id: 6, title: 'Photo 6', description: 'Photography collection', image: '/images/photography/IMG_5940.JPG' },
+    { id: 7, title: 'Photo 7', description: 'Photography collection', image: '/images/photography/IMG_6145.JPG' },
+    { id: 8, title: 'Photo 8', description: 'Photography collection', image: '/images/photography/IMG_6156.PNG' },
+    { id: 9, title: 'Photo 9', description: 'Photography collection', image: '/images/photography/IMG_6164.JPG' },
+    { id: 10, title: 'Photo 10', description: 'Photography collection', image: '/images/photography/IMG_6165.JPG' },
+    { id: 11, title: 'Photo 11', description: 'Photography collection', image: '/images/photography/IMG_6177.JPG' },
+    { id: 12, title: 'Photo 12', description: 'Photography collection', image: '/images/photography/IMG_6976.JPG' },
+    { id: 13, title: 'Photo 13', description: 'Photography collection', image: '/images/photography/IMG_6977.PNG' }
   ];
 
   const openModal = (photo) => {
