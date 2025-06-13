@@ -144,3 +144,35 @@
 .contact-instagram a:hover svg {
   transform: scale(1.1) rotate(-8deg);
 }
+
+@media (max-width: 1024px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  .contact-form {
+    min-width: 220px;
+    padding: 1.2rem 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0.5rem;
+  }
+  .contact-form {
+    min-width: 120px;
+    padding: 0.7rem 0.7rem;
+  }
+}
+@media (max-width: 500px) {
+  .contact-container {
+    padding: 0.2rem;
+  }
+  .contact-form {
+    min-width: 80px;
+    padding: 0.3rem 0.3rem;
+  }
+}

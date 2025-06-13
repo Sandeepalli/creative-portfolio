@@ -7,6 +7,7 @@ const Photography = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [loadedImages, setLoadedImages] = useState({});
   const [revealIndexes, setRevealIndexes] = useState([]);
+  const [likes, setLikes] = useState({});
 
   // Actual photography data from the photography directory
   const photos = [
@@ -55,6 +56,10 @@ const Photography = () => {
     setLoadedImages(prev => ({ ...prev, [id]: true }));
   };
 
+  const toggleLike = (id) => {
+    setLikes(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
   return (
     <div className="gallery-container">
       <div className="gallery-header">
@@ -83,8 +88,15 @@ const Photography = () => {
                   style={{ display: loadedImages[photo.id] ? 'block' : 'none' }}
                 />
               </div>
-              <div className="gallery-overlay">
+              <div className="gallery-overlay glass">
                 <span className="view-icon">+</span>
+                <button
+                  className={`like-btn${likes[photo.id] ? ' liked' : ''}`}
+                  onClick={e => { e.stopPropagation(); toggleLike(photo.id); }}
+                  aria-label={likes[photo.id] ? 'Unlike' : 'Like'}
+                >
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill={likes[photo.id] ? '#e25555' : 'none'} stroke="#e25555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.8 4.6c-1.5-1.4-3.9-1.4-5.4 0l-.7.7-.7-.7c-1.5-1.4-3.9-1.4-5.4 0-1.6 1.5-1.6 4 0 5.5l6.1 6.1 6.1-6.1c1.6-1.5 1.6-4 0-5.5z"></path></svg>
+                </button>
               </div>
             </div>
             <div className="gallery-info">
@@ -100,6 +112,9 @@ const Photography = () => {
           image={selectedImage.image}
           title={selectedImage.title}
           description={selectedImage.description}
+          photos={photos}
+          currentId={selectedImage.id}
+          setSelectedImage={setSelectedImage}
           onClose={closeModal}
         />
       )}

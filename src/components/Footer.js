@@ -12,9 +12,8 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Connect</h3>
           <div className="social-links">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.instagram.com/thislittle_artsylife/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
           </div>
         </div>
       </div>

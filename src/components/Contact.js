@@ -77,7 +77,7 @@ export default function Contact() {
       </form>
       <div className="contact-instagram">
         <a
-          href="https://instagram.com/YOUR_INSTAGRAM_USERNAME"
+          href="https://www.instagram.com/thislittle_artsylife/#"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"

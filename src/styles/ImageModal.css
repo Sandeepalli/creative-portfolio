@@ -16,10 +16,12 @@
   position: relative;
   max-width: 90%;
   max-height: 90%;
-  background-color: white;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
 }
 
 .modal-close {
@@ -35,12 +37,43 @@
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  color: #333;
+  font-size: 2.5rem;
+  padding: 0 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.modal-prev {
+  left: 10px;
+}
+
+.modal-next {
+  right: 10px;
+}
+
+.modal-nav:hover {
+  background: #e25555;
+  color: #fff;
+}
+
 .modal-image {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 80vh;
+  max-height: 70vh;
   object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .modal-info {
