@@ -8,7 +8,7 @@ const Home = () => {
       <section className="hero">
         <div className="hero-content">
           <div className="profile-container">
-            <img src="/images/profile.jpg" alt="Profile" className="profile-image" />
+            <img src="/images/profile.png" alt="Profile" className="profile-image" />
           </div>
           <div className="hero-text">
             <h1>Welcome</h1>
