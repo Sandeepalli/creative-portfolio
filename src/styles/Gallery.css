@@ -212,6 +212,74 @@
   100% { transform: scale(1); }
 }
 
+/* Video styles */
+.video-wrapper {
+  position: relative;
+}
+
+.video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.gallery-item:hover .video-play-icon {
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+}
+
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.video-player {
+  width: 100%;
+  max-height: 80vh;
+  display: block;
+  border-radius: 8px;
+  background: black;
+}
+
+@media (max-width: 768px) {
+  .video-modal-content {
+    width: 95%;
+    max-width: 100%;
+  }
+  
+  .video-player {
+    max-height: 50vh;
+  }
+  
+  .video-play-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 /* Masonry layout for larger screens */
 @media (min-width: 768px) {
   .gallery-grid {
@@ -278,11 +346,13 @@
   }
   .gallery-grid {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 12px;
     padding: 8px 0;
   }
   .gallery-item {
     border-radius: 8px;
+    margin: 0 auto;
+    max-width: 95vw;
   }
   .gallery-image-container {
     height: 120px !important;
@@ -299,4 +369,36 @@
     height: 32px;
     font-size: 16px;
   }
+}
+
+/* Portrait video thumbnail styles */
+.video-wrapper.portrait {
+  aspect-ratio: 9/16;
+  width: 100%;
+  height: 400px;
+  max-width: 260px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .video-wrapper.portrait {
+    height: 320px;
+    max-width: 180px;
+  }
+}
+@media (max-width: 600px) {
+  .video-wrapper.portrait {
+    height: 220px;
+    max-width: 120px;
+  }
+}
+
+.video-wrapper.portrait .gallery-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
 }

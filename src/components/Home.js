@@ -45,7 +45,18 @@ const Home = () => {
               </div>
             </div>
           </Link>
-          
+
+          <Link to="/videos" className="category-card">
+            <div className="category-image video-bg">
+              <div className="category-overlay">
+                <h3>Videos</h3>
+                <div className="category-line"></div>
+                <p>Short creative video clips</p>
+                <span className="view-more">View Gallery</span>
+              </div>
+            </div>
+          </Link>
+
           <div className="category-card">
             <div className="category-image writing-bg">
               <div className="category-overlay">

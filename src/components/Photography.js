@@ -26,6 +26,21 @@ const Photography = () => {
     { id: 13, title: 'Photo 13', description: 'Photography collection', image: '/images/photography/IMG_6977.PNG' }
   ];
 
+  // Preload images
+  useEffect(() => {
+    const preloadImages = () => {
+      photos.forEach(photo => {
+        const img = new Image();
+        img.src = photo.image;
+        img.onload = () => {
+          setLoadedImages(prev => ({ ...prev, [photo.id]: true }));
+        };
+      });
+    };
+    preloadImages();
+  }, []);
+
+  // Reveal animation
   useEffect(() => {
     let i = 0;
     setRevealIndexes([]);
@@ -39,13 +54,14 @@ const Photography = () => {
         }
       });
       i++;
-    }, 180); // Adjust speed here
+    }, 180);
     return () => clearInterval(interval);
-    // eslint-disable-next-line
-  }, []);
+  }, [photos.length]);
 
   const openModal = (photo) => {
-    setSelectedImage(photo);
+    if (loadedImages[photo.id]) {
+      setSelectedImage(photo);
+    }
   };
 
   const closeModal = () => {
@@ -56,14 +72,24 @@ const Photography = () => {
     setLoadedImages(prev => ({ ...prev, [id]: true }));
   };
 
-  const toggleLike = (id) => {
+  const toggleLike = (id, e) => {
+    e.stopPropagation();
     setLikes(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   return (
     <div className="gallery-container">
       <div className="gallery-header">
-        <Link to="/" className="back-button">← Back to Home</Link>
+        <Link to="/" className="back-button" aria-label="Back to Home">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign: 'middle', marginRight: 4}}>
+            <polyline points="15 18 9 12 15 6"></polyline>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" fill="none"></rect>
+            <path d="M9 12h7" stroke="currentColor"/>
+            <path d="M7 12h2" stroke="currentColor"/>
+            <path d="M9 12l2-2" stroke="currentColor"/>
+            <path d="M9 12l2 2" stroke="currentColor"/>
+          </svg>
+        </Link>
         <h1>Photography</h1>
         <p>Capturing moments and perspectives through the lens</p>
       </div>
@@ -83,7 +109,6 @@ const Photography = () => {
                   src={photo.image}
                   alt={photo.title}
                   className={`gallery-img${loadedImages[photo.id] ? ' loaded' : ''}`}
-                  loading="lazy"
                   onLoad={() => handleImageLoad(photo.id)}
                   style={{ display: loadedImages[photo.id] ? 'block' : 'none' }}
                 />
@@ -92,7 +117,7 @@ const Photography = () => {
                 <span className="view-icon">+</span>
                 <button
                   className={`like-btn${likes[photo.id] ? ' liked' : ''}`}
-                  onClick={e => { e.stopPropagation(); toggleLike(photo.id); }}
+                  onClick={(e) => toggleLike(photo.id, e)}
                   aria-label={likes[photo.id] ? 'Unlike' : 'Like'}
                 >
                   <svg width="28" height="28" viewBox="0 0 24 24" fill={likes[photo.id] ? '#e25555' : 'none'} stroke="#e25555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.8 4.6c-1.5-1.4-3.9-1.4-5.4 0l-.7.7-.7-.7c-1.5-1.4-3.9-1.4-5.4 0-1.6 1.5-1.6 4 0 5.5l6.1 6.1 6.1-6.1c1.6-1.5 1.6-4 0-5.5z"></path></svg>

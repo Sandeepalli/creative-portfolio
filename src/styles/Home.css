@@ -295,3 +295,7 @@
 .writing-bg {
   background: linear-gradient(45deg, rgba(139, 128, 255, 0.7) 0%, rgba(45, 48, 71, 0.8) 100%);
 }
+
+.video-bg {
+  background: linear-gradient(45deg, rgba(255, 215, 64, 0.8) 0%, rgba(139, 128, 255, 0.7) 100%);
+}

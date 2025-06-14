@@ -27,7 +27,16 @@ const Art = () => {
   return (
     <div className="gallery-container">
       <div className="gallery-header">
-        <Link to="/" className="back-button">← Back to Home</Link>
+        <Link to="/" className="back-button" aria-label="Back to Home">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign: 'middle', marginRight: 4}}>
+            <polyline points="15 18 9 12 15 6"></polyline>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" fill="none"></rect>
+            <path d="M9 12h7" stroke="currentColor"/>
+            <path d="M7 12h2" stroke="currentColor"/>
+            <path d="M9 12l2-2" stroke="currentColor"/>
+            <path d="M9 12l2 2" stroke="currentColor"/>
+          </svg>
+        </Link>
         <h1>Artwork</h1>
         <p>A collection of my artistic explorations and creations</p>
       </div>
